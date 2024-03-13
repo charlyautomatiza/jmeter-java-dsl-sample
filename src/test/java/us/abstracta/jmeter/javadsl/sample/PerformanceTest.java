@@ -13,10 +13,9 @@ class PerformanceTest {
   @Test
   void testPerformance() throws IOException {
     TestPlanStats stats = testPlan(
-        threadGroup(5, 3,
-            httpSampler("https://myservice")))
+        threadGroup(5, 2,
+            httpSampler("https://restful-booker.herokuapp.com/booking")))
         .run();
     assertThat(stats.overall().sampleTimePercentile99()).isLessThan(Duration.ofSeconds(5));
   }
-
 }
